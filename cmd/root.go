@@ -2,20 +2,18 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viber"
+	"github.com/spf13/viper"
+	"os"
 )
 
 var cfgFile string
 
-
 var rootCmd = &cobra.Command{
-	Use: "ip-tool"
-	Short: "IP Tool CLI in GO"
-	Long: "IP Tool CLI application writtenin GO"
+	Use:   "ip-tool",
+	Short: "IP Tool CLI in GO",
+	Long:  "IP Tool CLI application writtenin GO",
 }
-
 
 func Execute() {
 	cobra.CheckErr(rootCmd.Execute())
@@ -30,10 +28,8 @@ func init() {
 
 }
 
-
-
-func initConfig(){
-	if cfgFile != ""{
+func initConfig() {
+	if cfgFile != "" {
 		viper.SetConfigFile(cfgFile)
 	} else {
 		home, err := os.UserHomeDir()
